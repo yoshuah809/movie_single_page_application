@@ -3,14 +3,14 @@ import ReactDOM from "react-dom";
 import Body from "./Components/Body";
 import Footer from "./Components/Footer";
 import Menu from "./Components/Menu";
-import Navbar from "./Components/Navbar";
+import Header from "./Components/Header";
 import { BrowserRouter } from "react-router-dom";
 import "./styles.css";
 
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<Navbar />
+			<Header />
 			<Menu />
 			<Body />
 

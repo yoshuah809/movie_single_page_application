@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Header.css";
 
-const NavBar = () => {
+const Navbar = () => {
 	return (
-		<>
-			<div>Navbar</div>
+		<header>
+			<h1>Movies</h1>
 			<br />
 			<Link to="/favorites">Favorites</Link>
 			<br />
 			<Link to="/cart">Cart</Link>
-		</>
+		</header>
 	);
 };
 
-export default NavBar;
+export default Navbar;
