@@ -8,7 +8,7 @@ import TopRated from "./TopRated";
 
 const Body = () => {
 	return (
-		<div>
+		<section>
 			<Route path="/" exact component={Movies} />
 			<Route path="/movies" exact component={Movies} />
 			<Route path="/favorites" exact component={Favorites} />
@@ -16,7 +16,7 @@ const Body = () => {
 			<Route path="/searc" exact component={Search} />
 			<Route path="/toprated" exact component={TopRated} />
 			{/* <Route path="/cart" exact component={Cart} /> */}
-		</div>
+		</section>
 	);
 };
 

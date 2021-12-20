@@ -5,6 +5,7 @@ import Footer from "./Components/Footer";
 import Menu from "./Components/Menu";
 import Navbar from "./Components/Navbar";
 import { BrowserRouter } from "react-router-dom";
+import "./styles.css";
 
 ReactDOM.render(
 	<React.StrictMode>

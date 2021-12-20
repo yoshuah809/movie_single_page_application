@@ -3,7 +3,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Menu = () => {
 	return (
-		<>
+		<nav>
 			<div>Menu</div>
 			<br />
 			<Link to="/search">Search</Link>
@@ -11,7 +11,7 @@ const Menu = () => {
 			<Link to="/toprated">Top Rated</Link>
 			<br />
 			<Link to="/movies">All</Link>
-		</>
+		</nav>
 	);
 };
 
