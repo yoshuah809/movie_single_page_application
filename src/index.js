@@ -1,10 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Movies from "./Components/Movies";
+import Body from "./Components/Body";
+import Footer from "./Components/Footer";
+import Menu from "./Components/Menu";
+import Navbar from "./Components/Navbar";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Movies />
+		<BrowserRouter>
+			<Navbar />
+			<Menu />
+			<Body />
+
+			<Footer />
+		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById("root")
 );
