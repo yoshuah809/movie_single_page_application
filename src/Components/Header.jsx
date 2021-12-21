@@ -15,7 +15,7 @@ const Navbar = () => {
 				</Icon>
 			</Link>
 			<Badge badgeContent={1} color="secondary"></Badge>
-			<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;
 			<Link to="/cart">
 				<Icon color="action" fontSize="large">
 					shopping_cart
