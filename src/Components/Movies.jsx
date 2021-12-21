@@ -10,9 +10,9 @@ const Movies = () => {
 		LoadMovies();
 	}, []);
 
-	useEffect(() => {
-		console.log("Se ejecuta all trhe time");
-	}, []);
+	// useEffect(() => {
+	// 	console.log("Se ejecuta all trhe time");
+	// }, []);
 
 	const LoadMovies = async () => {
 		const { data: movies } = await getMovies();

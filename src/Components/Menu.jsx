@@ -36,12 +36,18 @@ const Menu = () => {
 				Search
 			</Button>
 			&nbsp;
-			<Button variant="contained">
+			<Button
+				variant="contained"
+				onClick={() => history.push({ pathname: "/toprated" })}
+			>
 				<Icon color="action">star</Icon>
 				Top Rated
 			</Button>
 			&nbsp;
-			<Button variant="contained">
+			<Button
+				variant="contained"
+				onClick={() => history.push({ pathname: "/movies" })}
+			>
 				<Icon color="action">apps</Icon>
 				All Movies
 			</Button>
