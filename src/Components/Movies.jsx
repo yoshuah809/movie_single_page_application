@@ -1,34 +1,13 @@
 import React, { useState } from "react";
 import Movie from "./Movie";
+import { getMovies } from "./Services/MovieServices";
 
 const Movies = () => {
 	const [movies, SetMovies] = useState([]);
-	// const movies = [
 
-	// 	{
-	// 		title: "Terminator",
-	// 		genre: "Accion",
-	// 		director: "James Cameron",
-	// 		year: 2000,
-	// 	},
-	// 	{
-	// 		title: "Ratatuille",
-	// 		genre: "Adventure",
-	// 		director: "Will Smith",
-	// 		year: 2011,
-	// 	},
-	// 	{
-	// 		title: "Avenger",
-	// 		genre: "Accion",
-	// 		director: "John Wayne",
-	// 		year: 2015,
-	// 	},
-	// ];
-
-	const LoadMovies = () => {
-		fetch("http://localhost:5000/api/Movie")
-			.then((response) => response.json())
-			.then((data) => SetMovies(data));
+	const LoadMovies = async () => {
+		const { data: movies } = await getMovies();
+		SetMovies(movies);
 	};
 
 	return (
@@ -37,7 +16,7 @@ const Movies = () => {
 			<button onClick={() => LoadMovies()}>Load Movies</button>
 
 			{movies.map((movie) => (
-				<Movie data={movie} />
+				<Movie data={movie} key={movie.MovieId} />
 			))}
 		</div>
 	);
