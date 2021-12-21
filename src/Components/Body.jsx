@@ -13,9 +13,9 @@ const Body = () => {
 			<Route path="/movies" exact component={Movies} />
 			<Route path="/favorites" exact component={Favorites} />
 			<Route path="/cart" exact component={Cart} />
-			<Route path="/searc" exact component={Search} />
+			<Route path="/search/:value" exact component={Search} />
 			<Route path="/toprated" exact component={TopRated} />
-			{/* <Route path="/cart" exact component={Cart} /> */}
+			<Route path="/search/" exact component={Movies} />
 		</section>
 	);
 };
