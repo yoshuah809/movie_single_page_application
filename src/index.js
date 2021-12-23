@@ -14,7 +14,7 @@ ReactDOM.render(
 		<BrowserRouter>
 			<Header />
 			<Menu />
-			<Register />
+
 			<Body />
 
 			<Footer />

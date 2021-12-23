@@ -1,51 +1,36 @@
 import React, { useState } from "react";
 import { Container, Icon, TextField, Button } from "@material-ui/core";
-import { register } from "./Services/UserServices";
+import { login } from "./Services/UserServices";
 import { useHistory } from "react-router-dom";
 
-const Register = () => {
-	const history = useHistory();
-
+function Login() {
 	const [user, setUSer] = useState({
-		name: "",
-		lastname: "",
 		email: "",
 		password: "",
 	});
 
+	const [msg, setMsg] = useState("");
 	const handleChange = (e) => {
 		setUSer({ ...user, [e.target.name]: e.target.value });
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await register(user);
+		const { data: token } = await login(user);
+		if (token !== "") {
+			history.push({ pathname: "/toprated" });
+		} else {
+			setMsg("Wrong credentials, please try again!");
+		}
 	};
+
+	const history = useHistory();
 
 	return (
 		<Container>
 			<form onSubmit={handleSubmit}>
 				<h2 style={{ color: "grey" }}>Movie Sales</h2>
-				<h2>Registrer Now</h2>
-				<Icon color="action">account_circle</Icon>
-				&nbsp;
-				<TextField
-					name="name"
-					required
-					placeholder="Type your Name"
-					style={{ width: 300 }}
-					onChange={(e) => handleChange(e)}
-				></TextField>
-				&nbsp;
-				<TextField
-					onChange={(e) => handleChange(e)}
-					name="lastname"
-					required
-					placeholder="Type your Lastname"
-					style={{ width: 300 }}
-				></TextField>
-				<br />
-				<br />
+				<h2>Welcome</h2>
 				<Icon color="action">mail_outline</Icon>
 				&nbsp;
 				<TextField
@@ -70,21 +55,23 @@ const Register = () => {
 				></TextField>
 				<br />
 				<br />
+				<h4 style={{ color: "red" }}>{msg}</h4>
 				<hr />
-				<Button
-					variant="contained"
-					color="default"
-					onClick={() => history.push({ pathname: "/" })}
-				>
-					Go Back
+				<Button variant="contained" color="primary" type="submit">
+					Login
 				</Button>
 				&nbsp; &nbsp;
-				<Button variant="contained" color="secondary" type="submit">
+				<Button
+					variant="contained"
+					color="secondary"
+					type="submit"
+					onClick={() => history.push({ pathname: "/register" })}
+				>
 					Register
 				</Button>
 			</form>
 		</Container>
 	);
-};
+}
 
-export default Register;
+export default Login;

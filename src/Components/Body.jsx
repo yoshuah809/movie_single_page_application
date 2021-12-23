@@ -6,11 +6,12 @@ import Favorites from "./Favorites";
 import Search from "./Search";
 import TopRated from "./TopRated";
 import Register from "./Register";
+import Login from "./Login";
 
 const Body = () => {
 	return (
 		<section>
-			<Route path="/" exact component={Movies} />
+			<Route path="/" exact component={Login} />
 			<Route path="/movies" exact component={Movies} />
 			<Route path="/favorites" exact component={Favorites} />
 			<Route path="/cart" exact component={Cart} />
@@ -18,6 +19,7 @@ const Body = () => {
 			<Route path="/toprated" exact component={TopRated} />
 			<Route path="/search/" exact component={Movies} />
 			<Route path="/register/" exact component={Register} />
+			{/* <Route path="/login/" exact component={Login} /> */}
 		</section>
 	);
 };
