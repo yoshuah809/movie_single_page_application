@@ -4,6 +4,8 @@ import Body from "./Components/Body";
 import Footer from "./Components/Footer";
 import Menu from "./Components/Menu";
 import Header from "./Components/Header";
+import Register from "./Components/Register";
+
 import { BrowserRouter } from "react-router-dom";
 import "./styles.css";
 
@@ -12,6 +14,7 @@ ReactDOM.render(
 		<BrowserRouter>
 			<Header />
 			<Menu />
+			<Register />
 			<Body />
 
 			<Footer />

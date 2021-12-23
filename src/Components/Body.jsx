@@ -5,6 +5,7 @@ import Cart from "./Cart";
 import Favorites from "./Favorites";
 import Search from "./Search";
 import TopRated from "./TopRated";
+import Register from "./Register";
 
 const Body = () => {
 	return (
@@ -16,6 +17,7 @@ const Body = () => {
 			<Route path="/search/:value" exact component={Search} />
 			<Route path="/toprated" exact component={TopRated} />
 			<Route path="/search/" exact component={Movies} />
+			<Route path="/register/" exact component={Register} />
 		</section>
 	);
 };
