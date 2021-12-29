@@ -5,16 +5,25 @@ import Rating from "@material-ui/lab/Rating";
 
 const Movie = ({ data }) => {
 	const [buttons, setButtons] = useState("");
+	const [isFavorite, setIsFavorite] = useState(
+		data.favorite.length ? true : false
+	);
 	const favorite = useRef();
-	const { handleAddFavorite } = useContext(FavoriteContext);
+	const { handleAddFavorite, handleRemoveFavorite } =
+		useContext(FavoriteContext);
 
 	const setFavorites = (movie) => {
 		//console.log(movie);
-		if (movie.favorite.length === 0) {
+		if (!isFavorite) {
 			handleAddFavorite(movie);
 			favorite.current.className =
 				"material-icons MuiIcon-root MuiIcon-colorSecondary";
+		} else {
+			handleRemoveFavorite(movie);
+			favorite.current.className =
+				"material-icons MuiIcon-root MuiIcon-colorDisabled";
 		}
+		setIsFavorite(!isFavorite);
 	};
 	return (
 		<>

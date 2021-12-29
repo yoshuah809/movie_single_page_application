@@ -1,5 +1,9 @@
 import React, { useEffect, createContext, useState } from "react";
-import { getFavorites, addFavorite } from "../Services/FavoriteServices";
+import {
+	getFavorites,
+	addFavorite,
+	deleteFavorites,
+} from "../Services/FavoriteServices";
 
 export const FavoriteContext = createContext();
 
@@ -21,12 +25,23 @@ export const FavoriteProvider = (props) => {
 		setFavoriteQty(favoriteQty + 1);
 	};
 
+	const handleRemoveFavorite = async (movie) => {
+		const { data } = await deleteFavorites({
+			UserID: 1001,
+			MovieId: movie.movieId,
+		});
+
+		setFavoriteQty(favoriteQty - 1);
+	};
+
 	useEffect(() => {
 		handleGetFavorite();
 	}, []);
 
 	return (
-		<FavoriteContext.Provider value={{ favoriteQty, handleAddFavorite }}>
+		<FavoriteContext.Provider
+			value={{ favoriteQty, handleAddFavorite, handleRemoveFavorite }}
+		>
 			{props.children}
 		</FavoriteContext.Provider>
 	);
