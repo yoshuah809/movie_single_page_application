@@ -8,16 +8,17 @@ import Register from "./Components/Register";
 
 import { BrowserRouter } from "react-router-dom";
 import "./styles.css";
+import { FavoriteProvider } from "./Components/Context/FavoriteContext";
 
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<Header />
-			<Menu />
-
-			<Body />
-
-			<Footer />
+			<FavoriteProvider>
+				<Header />
+				<Menu />
+				<Body />
+				<Footer />
+			</FavoriteProvider>
 		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById("root")

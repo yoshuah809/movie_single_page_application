@@ -1,20 +1,32 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
+import { FavoriteContext } from "./Context/FavoriteContext";
 import { Paper, Button, Grid, Icon } from "@material-ui/core/";
 import Rating from "@material-ui/lab/Rating";
 
 const Movie = ({ data }) => {
 	const [buttons, setButtons] = useState("");
 	const favorite = useRef();
+	const { handleAddFavorite } = useContext(FavoriteContext);
 
-	const setFavorites = () => {
-		favorite.current.style.backgroundColor = "pink";
+	const setFavorites = (movie) => {
+		//console.log(movie);
+		if (movie.favorite.length === 0) {
+			handleAddFavorite(movie);
+			favorite.current.className =
+				"material-icons MuiIcon-root MuiIcon-colorSecondary";
+		}
 	};
 	return (
 		<>
 			<Grid container item xs={12} sm={4} lg={3}>
 				<Paper style={{ padding: 5, textAlign: "center" }}>
 					<h2>{data.title}</h2>
-					<Icon color={"disabled"} style={{ cursor: "pointer" }}>
+					<Icon
+						color={data.favorite.length > 0 ? "secondary" : "disabled"}
+						style={{ cursor: "pointer" }}
+						ref={favorite}
+						onClick={() => setFavorites(data)}
+					>
 						favorite
 					</Icon>
 					<div>

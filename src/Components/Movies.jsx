@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import Movie from "./Movie";
 import { getMovies } from "./Services/MovieServices";
 import Grid from "@material-ui/core/Grid";
@@ -9,10 +10,6 @@ const Movies = () => {
 	useEffect(() => {
 		LoadMovies();
 	}, []);
-
-	// useEffect(() => {
-	// 	console.log("Se ejecuta all trhe time");
-	// }, []);
 
 	const LoadMovies = async () => {
 		const { data: movies } = await getMovies();
