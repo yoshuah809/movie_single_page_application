@@ -9,10 +9,12 @@ export const FavoriteContext = createContext();
 
 export const FavoriteProvider = (props) => {
 	const [favoriteQty, setFavoriteQty] = useState(0);
+	const [favItems, setFavItems] = useState([]);
 
 	const handleGetFavorite = async () => {
 		const { data: favorites } = await getFavorites();
 		setFavoriteQty(favorites.length);
+		setFavItems(favorites);
 	};
 
 	const handleAddFavorite = async (movie) => {
@@ -23,6 +25,7 @@ export const FavoriteProvider = (props) => {
 		});
 
 		setFavoriteQty(favoriteQty + 1);
+		setFavItems([...favItems, movie]);
 	};
 
 	const handleRemoveFavorite = async (movie) => {
@@ -31,6 +34,8 @@ export const FavoriteProvider = (props) => {
 			MovieId: movie.movieId,
 		});
 
+		const newItem = favItems.filter((item) => item.movieId !== movie.movieId);
+		setFavItems(newItem);
 		setFavoriteQty(favoriteQty - 1);
 	};
 
@@ -40,7 +45,7 @@ export const FavoriteProvider = (props) => {
 
 	return (
 		<FavoriteContext.Provider
-			value={{ favoriteQty, handleAddFavorite, handleRemoveFavorite }}
+			value={{ favItems, favoriteQty, handleAddFavorite, handleRemoveFavorite }}
 		>
 			{props.children}
 		</FavoriteContext.Provider>
